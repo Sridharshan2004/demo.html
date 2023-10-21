@@ -3,8 +3,7 @@ name: HTML Validation
 on:
   push:
     branches:
-      - Abranch
-      - Bbranch
+      - main
 
 jobs:
   merge_and_test:
@@ -14,18 +13,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Merge Abranch
+      - name: Merge main
         run: |
-          git checkout Cmain
-          git merge Abranch
-          git push origin Cmain
-
-      - name: Merge Bbranch
-        run: |
-          git checkout Cmain
-          git merge Bbranch
-          git push origin Cmain
-
+          git checkout sub
+          git merge main
+          git push origin sub
+          
       - name: Install Node.js
         uses: actions/setup-node@v4
         with:

@@ -3,8 +3,7 @@ name: Merge and Test
 on:
   push:
     branches:
-      - Abranch
-      - Bbranch
+      - sub
 
 jobs:
   merge_and_test:
@@ -14,17 +13,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Merge Abranch
+      - name: Merge sub branch
         run: |
-          git checkout Cmain
-          git merge Abranch
-          git push origin Cmain
-
-      - name: Merge Bbranch
-        run: |
-          git checkout Cmain
-          git merge Bbranch
-          git push origin Cmain
+          git checkout main
+          git merge sub
+          git push origin main
 
       - name: Run Tests
         run: |

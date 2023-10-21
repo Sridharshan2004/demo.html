@@ -3,7 +3,7 @@ name: Merge and Test
 on:
   push:
     branches:
-      - sub
+      - main
 
 jobs:
   merge_and_test:
@@ -15,9 +15,9 @@ jobs:
 
       - name: Merge sub branch
         run: |
-          git checkout main
-          git merge sub
-          git push origin main
+          git checkout sub
+          git merge main
+          git push origin sub
 
       - name: Run Tests
         run: |

@@ -1,0 +1,38 @@
+name: HTML Validation
+
+on:
+  push:
+    branches:
+      - Abranch
+      - Bbranch
+
+jobs:
+  merge_and_test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Merge Abranch
+        run: |
+          git checkout Cmain
+          git merge Abranch
+          git push origin Cmain
+
+      - name: Merge Bbranch
+        run: |
+          git checkout Cmain
+          git merge Bbranch
+          git push origin Cmain
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '14'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run HTML Validation
+        run: npm run html-validate

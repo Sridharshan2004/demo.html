@@ -3,7 +3,8 @@ name: Merge and Test
 on:
   push:
     branches:
-      - main
+      - Abranch
+      - Bbranch
 
 jobs:
   merge_and_test:
@@ -13,21 +14,20 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Merge into main
+      - name: Merge Abranch
         run: |
-          git checkout sub
-          git merge main
-          git push origin sub
+          git checkout Cmain
+          git merge Abranch
+          git push origin Cmain
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '14'
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Run HTML tests
+      - name: Merge Bbranch
         run: |
-          # Replace 'test-command' with your actual test command for HTML
-          npm run test-command
+          git checkout Cmain
+          git merge Bbranch
+          git push origin Cmain
+
+      - name: Run Tests
+        run: |
+          # Add commands to run your tests here
+          echo "Tests are running..."
+

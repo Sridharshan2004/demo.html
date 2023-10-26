@@ -13,7 +13,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Merge sub branch
+      - name: Merge main branch
         run: |
           git checkout sub
           git merge main

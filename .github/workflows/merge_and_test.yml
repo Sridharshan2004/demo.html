@@ -21,6 +21,6 @@ jobs:
 
       - name: Run Tests
         run: |
-          # Add commands to run your tests here
+          npm run build
           echo "Tests are running..."
 
